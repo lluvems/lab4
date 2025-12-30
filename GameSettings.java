@@ -18,6 +18,8 @@ public class GameSettings {
         timeLimitEnabled = false;
         highlightMoves = true;
         timeLimitSeconds = 0;
+
+        instanceCount++;
     }
 
     public boolean getRandomTurnOrder() {
