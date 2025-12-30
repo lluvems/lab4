@@ -29,18 +29,18 @@ public class GameSettings {
     }
 
     public void setRandomTurnOrder(boolean random) {
-        randomTurnOrder = random;
+        this.randomTurnOrder = random;
     }
 
     public void setTimeLimitEnabled(boolean enabled) {
-        timeLimitEnabled = enabled;
+        this.timeLimitEnabled = enabled;
     }
 
     public void setTimeLimitSeconds(long seconds) {
-        timeLimitSeconds = seconds;
+        this.timeLimitSeconds = seconds;
     }
 
     public void setHighlightMoves(boolean highlight) {
-        highlightMoves = highlight;
+        this.highlightMoves = highlight;
     }
 }
