@@ -1,8 +1,6 @@
 import java.util.List;
-import java.util.ArrayList;
 
 public abstract class Piece {
-    private List<Coordinates> pattern; // может понадобиться позже, но сейчас не используется в C++
     private boolean isAlive = true;
     private Color color;
     private PieceType type;
