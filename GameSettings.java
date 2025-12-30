@@ -1,11 +1,13 @@
-private static int instanceCount = 0;
+
 
 public class GameSettings {
     private boolean randomTurnOrder; // случайная очередь хода 
     private boolean timeLimitEnabled; // вкл ли ограничение времени
     private long timeLimitSeconds; // лимит времени (в сек)
     private boolean highlightMoves; //подсвечивать ходы
-
+    
+    private static int instanceCount = 0;
+    
     public static int getInstanceCount() {
         return instanceCount;
     }
