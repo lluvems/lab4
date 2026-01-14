@@ -34,9 +34,12 @@ public class MoveTimer extends BaseTimer {
     }
 
     public MoveTimer(long limit) {
-        limitTime = limit;
-        totalTimeUsed = 0;
-        currentRemaining = limit;
+            if (limit <= 0) {
+            throw new IllegalArgumentException("Лимит времени должен быть положительным");
+        }
+        this.limitTime = limit;
+        this.totalTimeUsed = 0;
+        this.currentRemaining = limit;
     }
 
     public MoveTimer() {
