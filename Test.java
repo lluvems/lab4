@@ -62,6 +62,26 @@ public class Test {
 
         //Вызов виртуального метода ИЗ НЕ-ВИРТУАЛЬНОГО метода базового класса
         polyRef.demonstrateVirtualCall(); 
+
+        //Клонирование
+        TakenPieceController orig = new TakenPieceController();
+        orig.cutQueen(Color.WHITE);
+        System.out.println("\nКлонирование");
+        TakenPieceController shallow = (TakenPieceController) orig.shallowClone();
+        shallow.cutRook(Color.BLACK);
+        System.out.println("После изменения shallow:");
+        orig.printTakenPieces(); 
+
+        //Полиморфизм и виртуальные вызовы
+        System.out.println("\nПолиморфизм");
+        TakenPieceController poly = new AdvancedTakenPieceController("TestUser");
+        poly.printTakenPieces(); 
+        poly.demonstrateVirtualCall();
+
+        //Множественное наследование
+        System.out.println("\nИнтерфейсы");
+        Reportable reporter = (Reportable) poly;
+        reporter.generateReport();
         
     }
     
