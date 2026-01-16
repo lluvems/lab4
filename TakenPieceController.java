@@ -109,20 +109,23 @@ public class TakenPieceController implements CloneableTracker {
     }
 
     public void printTakenPieces() {
-        System.out.println("Взятые фигуры:");
-        System.out.print("Белые (взятые черными): ");
-        System.out.print("Ферзи:" + cutWhiteQueens + " ");
-        System.out.print("Ладьи:" + cutWhiteRooks + " ");
-        System.out.print("Слоны:" + cutWhiteBishops + " ");
-        System.out.print("Кони:" + cutWhiteKnights + " ");
-        System.out.println("Пешки:" + cutWhitePawns);
+        System.out.println("Взятые белые фигуры:");
+        System.out.println("Ферзи: " + cutWhiteQueens);
+        System.out.println("Ладьи: " + cutWhiteRooks);
+        System.out.println("Слоны: " + cutWhiteBishops);
+        System.out.println("Кони: " + cutWhiteKnights);
+        System.out.println("Пешки: " + cutWhitePawns);
 
-        System.out.print("Черные (взятые белыми): ");
-        System.out.print("Ферзи:" + cutBlackQueens + " ");
-        System.out.print("Ладьи:" + cutBlackRooks + " ");
-        System.out.print("Слоны:" + cutBlackBishops + " ");
-        System.out.print("Кони:" + cutBlackKnights + " ");
-        System.out.println("Пешки:" + cutBlackPawns);
+        System.out.println("Взятые чёрные фигуры:");
+        System.out.println("Ферзи: " + cutBlackQueens);
+        System.out.println("Ладьи: " + cutBlackRooks);
+        System.out.println("Слоны: " + cutBlackBishops);
+        System.out.println("Кони: " + cutBlackKnights);
+        System.out.println("Пешки: " + cutBlackPawns);
+    }
+
+    public void demonstrateVirtualCall() {
+        printTakenPieces();
     }
 
     @Override

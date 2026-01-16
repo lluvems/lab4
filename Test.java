@@ -50,5 +50,19 @@ public class Test {
         } catch (Exception e) {
             System.out.println("Неожиданная ошибка: " + e.getMessage());
         }
+
+
+        System.out.println("\n=== Демонстрация виртуальных вызовов ===");
+
+        //Ссылка базового типа → объект производного класса
+        TakenPieceController polyRef = new AdvancedTakenPieceController("Алиса");
+
+        // Вызов через базовую ссылку — но сработает ПЕРЕОПРЕДЕЛЁННЫЙ метод
+        polyRef.printTakenPieces(); 
+
+        //Вызов виртуального метода ИЗ НЕ-ВИРТУАЛЬНОГО метода базового класса
+        polyRef.demonstrateVirtualCall(); 
+        
     }
+    
 }
