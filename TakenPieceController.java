@@ -123,3 +123,8 @@ public class TakenPieceController {
         System.out.println("Пешки:" + cutBlackPawns);
     }
 }
+
+interface CloneableTracker {
+    Object shallowClone();
+    Object deepClone();
+}
