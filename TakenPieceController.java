@@ -158,3 +158,7 @@ interface CloneableTracker {
     Object shallowClone();
     Object deepClone();
 }
+
+interface Reportable {
+    void generateReport();
+}

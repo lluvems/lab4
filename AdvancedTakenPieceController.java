@@ -1,4 +1,4 @@
-class AdvancedTakenPieceController extends TakenPieceController {
+class AdvancedTakenPieceController extends TakenPieceController implements CloneableTracker, Reportable {
     private String ownerName;
 
     public AdvancedTakenPieceController(String name) {
@@ -15,5 +15,11 @@ class AdvancedTakenPieceController extends TakenPieceController {
     public void printFullReport() {
         super.printTakenPieces(); 
         System.out.println("Отчёт завершён.");
+    }
+
+    @Override
+    public void generateReport() {
+        System.out.println("Генерация отчёта для " + ownerName);
+        printFullReport();
     }
 }
