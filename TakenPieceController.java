@@ -1,15 +1,17 @@
-public class TakenPieceController {
-    private int cutWhiteQueens;
-    private int cutWhiteRooks;
-    private int cutWhiteBishops;
-    private int cutWhiteKnights;
-    private int cutWhitePawns;
+public class TakenPieceController implements CloneableTracker {
+    protected int cutWhiteQueens;
+    protected int cutWhiteRooks;
+    protected int cutWhiteBishops;
+    protected int cutWhiteKnights;
+    protected int cutWhitePawns;
 
-    private int cutBlackQueens;
-    private int cutBlackRooks;
-    private int cutBlackBishops;
-    private int cutBlackKnights;
-    private int cutBlackPawns;
+    protected int cutBlackQueens;
+    protected int cutBlackRooks;
+    protected int cutBlackBishops;
+    protected int cutBlackKnights;
+    protected int cutBlackPawns;
+
+    
 
     public TakenPieceController() {
         initWhite();
@@ -107,19 +109,56 @@ public class TakenPieceController {
     }
 
     public void printTakenPieces() {
-        System.out.println("Взятые фигуры:");
-        System.out.print("Белые (взятые черными): ");
-        System.out.print("Ферзи:" + cutWhiteQueens + " ");
-        System.out.print("Ладьи:" + cutWhiteRooks + " ");
-        System.out.print("Слоны:" + cutWhiteBishops + " ");
-        System.out.print("Кони:" + cutWhiteKnights + " ");
-        System.out.println("Пешки:" + cutWhitePawns);
+        System.out.println("Взятые белые фигуры:");
+        System.out.println("Ферзи: " + cutWhiteQueens);
+        System.out.println("Ладьи: " + cutWhiteRooks);
+        System.out.println("Слоны: " + cutWhiteBishops);
+        System.out.println("Кони: " + cutWhiteKnights);
+        System.out.println("Пешки: " + cutWhitePawns);
 
-        System.out.print("Черные (взятые белыми): ");
-        System.out.print("Ферзи:" + cutBlackQueens + " ");
-        System.out.print("Ладьи:" + cutBlackRooks + " ");
-        System.out.print("Слоны:" + cutBlackBishops + " ");
-        System.out.print("Кони:" + cutBlackKnights + " ");
-        System.out.println("Пешки:" + cutBlackPawns);
+        System.out.println("Взятые чёрные фигуры:");
+        System.out.println("Ферзи: " + cutBlackQueens);
+        System.out.println("Ладьи: " + cutBlackRooks);
+        System.out.println("Слоны: " + cutBlackBishops);
+        System.out.println("Кони: " + cutBlackKnights);
+        System.out.println("Пешки: " + cutBlackPawns);
     }
+
+    public void demonstrateVirtualCall() {
+        printTakenPieces();
+    }
+
+    @Override
+    public Object shallowClone() {
+        try {
+            return super.clone(); // Object.clone() — поверхностное
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
+     @Override
+    public Object deepClone() {
+        TakenPieceController copy = new TakenPieceController();
+        copy.cutWhiteQueens = this.cutWhiteQueens;
+        copy.cutWhiteRooks = this.cutWhiteRooks;
+        copy.cutWhiteBishops = this.cutWhiteBishops;
+        copy.cutWhiteKnights = this.cutWhiteKnights;
+        copy.cutWhitePawns = this.cutWhitePawns;
+        copy.cutBlackQueens = this.cutBlackQueens;
+        copy.cutBlackRooks = this.cutBlackRooks;
+        copy.cutBlackBishops = this.cutBlackBishops;
+        copy.cutBlackKnights = this.cutBlackKnights;
+        copy.cutBlackPawns = this.cutBlackPawns;
+        return copy;
+    }
+}
+
+interface CloneableTracker {
+    Object shallowClone();
+    Object deepClone();
+}
+
+interface Reportable {
+    void generateReport();
 }

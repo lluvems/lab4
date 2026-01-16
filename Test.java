@@ -50,5 +50,39 @@ public class Test {
         } catch (Exception e) {
             System.out.println("Неожиданная ошибка: " + e.getMessage());
         }
+
+
+        System.out.println("\n=== Демонстрация виртуальных вызовов ===");
+
+        //Ссылка базового типа → объект производного класса
+        TakenPieceController polyRef = new AdvancedTakenPieceController("Алиса");
+
+        // Вызов через базовую ссылку — но сработает ПЕРЕОПРЕДЕЛЁННЫЙ метод
+        polyRef.printTakenPieces(); 
+
+        //Вызов виртуального метода ИЗ НЕ-ВИРТУАЛЬНОГО метода базового класса
+        polyRef.demonstrateVirtualCall(); 
+
+        //Клонирование
+        TakenPieceController orig = new TakenPieceController();
+        orig.cutQueen(Color.WHITE);
+        System.out.println("\nКлонирование");
+        TakenPieceController shallow = (TakenPieceController) orig.shallowClone();
+        shallow.cutRook(Color.BLACK);
+        System.out.println("После изменения shallow:");
+        orig.printTakenPieces(); 
+
+        //Полиморфизм и виртуальные вызовы
+        System.out.println("\nПолиморфизм");
+        TakenPieceController poly = new AdvancedTakenPieceController("TestUser");
+        poly.printTakenPieces(); 
+        poly.demonstrateVirtualCall();
+
+        //Множественное наследование
+        System.out.println("\nИнтерфейсы");
+        Reportable reporter = (Reportable) poly;
+        reporter.generateReport();
+        
     }
+    
 }
