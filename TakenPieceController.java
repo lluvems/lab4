@@ -1,15 +1,17 @@
-public class TakenPieceController {
-    private int cutWhiteQueens;
-    private int cutWhiteRooks;
-    private int cutWhiteBishops;
-    private int cutWhiteKnights;
-    private int cutWhitePawns;
+public class TakenPieceController implements CloneableTracker {
+    protected int cutWhiteQueens;
+    protected int cutWhiteRooks;
+    protected int cutWhiteBishops;
+    protected int cutWhiteKnights;
+    protected int cutWhitePawns;
 
-    private int cutBlackQueens;
-    private int cutBlackRooks;
-    private int cutBlackBishops;
-    private int cutBlackKnights;
-    private int cutBlackPawns;
+    protected int cutBlackQueens;
+    protected int cutBlackRooks;
+    protected int cutBlackBishops;
+    protected int cutBlackKnights;
+    protected int cutBlackPawns;
+
+    
 
     public TakenPieceController() {
         initWhite();
@@ -121,6 +123,31 @@ public class TakenPieceController {
         System.out.print("Слоны:" + cutBlackBishops + " ");
         System.out.print("Кони:" + cutBlackKnights + " ");
         System.out.println("Пешки:" + cutBlackPawns);
+    }
+
+    @Override
+    public Object shallowClone() {
+        try {
+            return super.clone(); // Object.clone() — поверхностное
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
+    }
+
+     @Override
+    public Object deepClone() {
+        TakenPieceController copy = new TakenPieceController();
+        copy.cutWhiteQueens = this.cutWhiteQueens;
+        copy.cutWhiteRooks = this.cutWhiteRooks;
+        copy.cutWhiteBishops = this.cutWhiteBishops;
+        copy.cutWhiteKnights = this.cutWhiteKnights;
+        copy.cutWhitePawns = this.cutWhitePawns;
+        copy.cutBlackQueens = this.cutBlackQueens;
+        copy.cutBlackRooks = this.cutBlackRooks;
+        copy.cutBlackBishops = this.cutBlackBishops;
+        copy.cutBlackKnights = this.cutBlackKnights;
+        copy.cutBlackPawns = this.cutBlackPawns;
+        return copy;
     }
 }
 
